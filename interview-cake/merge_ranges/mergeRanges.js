@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-function mergeRanges(ranges) {
+const mergeRanges = ranges => {
   const sorted = ranges.sort((a, b) => {
     return a.startTime - b.startTime;
   });
@@ -18,9 +18,9 @@ function mergeRanges(ranges) {
     }
   });
   return mergedMeetings;
-}
+};
 
-function assertArrayEquals(a, b, desc) {
+const assertArrayEquals = (a, b, desc) => {
   // Sort the keys in each meeting to avoid
   // failing based on differences in key order.
   const orderedA = a.map(meeting => {
@@ -36,7 +36,7 @@ function assertArrayEquals(a, b, desc) {
   } else {
     console.log(`${desc} ... PASS`);
   }
-}
+};
 
 let desc = 'meetings overlap';
 let actual = mergeRanges([{ startTime: 1, endTime: 3 }, { startTime: 2, endTime: 4 }]);
