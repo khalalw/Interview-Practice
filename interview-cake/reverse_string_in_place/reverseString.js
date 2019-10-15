@@ -1,6 +1,5 @@
+/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
-import { assertEqual } from '../../assertions';
-
 const reverse = arrayOfChars => {
   const swap = (arr, a, b) => {
     const temp = arr[a];
@@ -12,6 +11,13 @@ const reverse = arrayOfChars => {
   }
 };
 
+const assertEqual = (a, b, desc) => {
+  if (a === b) {
+    console.log(`${desc} ... PASS`);
+  } else {
+    console.log(`${desc} ... FAIL: ${a} != ${b}`);
+  }
+};
 //  Tests
 let desc = 'empty string';
 let input = ''.split('');

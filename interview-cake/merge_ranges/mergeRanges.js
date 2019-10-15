@@ -1,6 +1,4 @@
 /* eslint-disable no-console */
-import { assertArrayEquals } from '../../assertions';
-
 const mergeRanges = ranges => {
   const sorted = ranges.sort((a, b) => {
     return a.startTime - b.startTime;
@@ -20,6 +18,24 @@ const mergeRanges = ranges => {
     }
   });
   return mergedMeetings;
+};
+
+const assertArrayEquals = (a, b, desc) => {
+  // Sort the keys in each meeting to avoid
+  // failing based on differences in key order.
+  const orderedA = a.map(meeting => {
+    return JSON.stringify(meeting, Object.keys(meeting).sort());
+  });
+  const orderedB = b.map(meeting => {
+    return JSON.stringify(meeting, Object.keys(meeting).sort());
+  });
+  const arrayA = JSON.stringify(orderedA);
+  const arrayB = JSON.stringify(orderedB);
+  if (arrayA !== arrayB) {
+    console.log(`${desc} ... FAIL: ${JSON.stringify(a)} != ${JSON.stringify(b)}`);
+  } else {
+    console.log(`${desc} ... PASS`);
+  }
 };
 
 let desc = 'meetings overlap';
@@ -85,4 +101,3 @@ expected = [
   { startTime: 9, endTime: 12 }
 ];
 assertArrayEquals(actual, expected, desc);
-module.exports = mergeRanges;
