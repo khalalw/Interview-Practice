@@ -31,6 +31,7 @@ const isFirstComeFirstServed = (takeOutOrders, dineInOrders, servedOrders) => {
 };
 
 // TESTS
+// @ts-ignore
 const assertEquals = (a, b, desc) => {
   if (a === b) {
     console.log(`${desc} ... PASS`);
