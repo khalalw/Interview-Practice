@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+// @ts-check
 const isFirstComeFirstServed = (takeOutOrders, dineInOrders, servedOrders) => {
   if (servedOrders.length !== takeOutOrders.length + dineInOrders.length) {
     return false;
@@ -20,7 +21,7 @@ const isFirstComeFirstServed = (takeOutOrders, dineInOrders, servedOrders) => {
   // merge takeout and dine in order
   const mergedOrders = mergeArrays(takeOutOrders, dineInOrders);
 
-  for (let i = 0; i < servedOrders.length; i++) {
+  for (let i = 0; i < servedOrders.length; i += 1) {
     if (servedOrders[i] !== mergedOrders[i]) {
       return false;
     }
